@@ -1,4 +1,3 @@
-import Link from "next/link";
 import "./globals.css";
 
 export const metadata = {
@@ -13,14 +12,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
-        <div className="navbar">
-          <Link href="/">홈</Link>
-          <Link href="/list">리스트</Link>
-          <Link href="/cart">장바구니</Link>
-        </div>
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
