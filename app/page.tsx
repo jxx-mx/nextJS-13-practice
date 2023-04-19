@@ -2,6 +2,7 @@ import { connectDB } from "../util/database";
 
 async function Home() {
   const data = await getData();
+
   return (
     <div>
       {data.map((res) => (
