@@ -4,7 +4,7 @@ import DetailLink from "./DetailLink";
 
 async function List() {
   const data = await getData();
-  console.log(data);
+
   return (
     <div className="list-bg">
       {data.map((item, i) => (
