@@ -1,3 +1,4 @@
+import Link from "next/link";
 import "./globals.css";
 
 export const metadata = {
@@ -12,7 +13,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <>
+          <div className="navbar">
+            <Link href="/" className="logo">
+              Appleforum
+            </Link>
+            <Link href="/list">List</Link>
+          </div>
+          {children}
+        </>
+      </body>
     </html>
   );
 }

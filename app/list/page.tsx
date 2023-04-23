@@ -1,5 +1,4 @@
 import { connectDB } from "@/util/database";
-import Link from "next/link";
 import DetailLink from "./DetailLink";
 
 async function List() {
@@ -12,7 +11,8 @@ async function List() {
           <h4>{item.title}</h4>
           <p>{item.content}</p>
           <p>1월 1일</p>
-          <DetailLink to={`/detail/${item._id}`} />
+          <DetailLink to={`/detail/${item._id}`} text="상세보기" />
+          <DetailLink to={`/edit/${item._id}`} text="수정하기" />
         </div>
       ))}
     </div>

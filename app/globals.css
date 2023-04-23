@@ -23,6 +23,7 @@
   padding: 20px;
 }
 input {
+  width: 100%;
   box-sizing: border-box;
   padding: 10px;
   display: block;
@@ -33,4 +34,17 @@ button {
   background: lightgray;
   border: none;
   border-radius: 5px;
+}
+
+.navbar {
+  background: white;
+  padding: 20px;
+}
+.navbar a {
+  margin-right: 10px;
+  text-decoration: none;
+  color: black;
+}
+.logo {
+  font-weight: bold;
 }
