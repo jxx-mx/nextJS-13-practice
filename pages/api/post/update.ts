@@ -17,16 +17,15 @@ async function handler(
   }
 
   try {
-    let changeValue = {
-      title: req.body.title,
-      content: req.body.content,
-    };
-
+    const { title, content, id } = req.body;
     const db = (await connectDB).db("next-practice");
 
     await db
       .collection("post")
-      .updateOne({ _id: new ObjectId(req.body._id) }, { $set: changeValue });
+      .updateOne(
+        { _id: new ObjectId(id) },
+        { $set: { title: title, content: content } }
+      );
     return res.status(200).redirect(302, "/list");
   } catch (error) {}
 }
