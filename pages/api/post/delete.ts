@@ -21,10 +21,9 @@ async function deleteHandler(
     const result = await db
       .collection("post")
       .deleteOne({ _id: new ObjectId(req.body) });
-    console.log(result);
     res.status(200).json({ message: "success" });
   } catch (error) {
-    console.log(error);
+    console.log("error", error);
   }
 }
 

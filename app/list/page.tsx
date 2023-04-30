@@ -1,14 +1,18 @@
 import { connectDB } from "@/util/database";
-import DetailLink from "./DetailLink";
 import ListItem from "./ListItem";
 
 async function List() {
   const data = await getData();
-  console.log(data);
+
+  const list = data.map((item) => ({
+    id: item._id.toString(),
+    title: item.title,
+    content: item.content,
+  }));
 
   return (
     <div className="list-bg">
-      <ListItem data={data} />
+      <ListItem data={list} />
     </div>
   );
 }

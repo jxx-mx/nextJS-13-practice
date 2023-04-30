@@ -19,6 +19,7 @@ async function handler(
   const db = (await connectDB).db("next-practice");
   let result = await db.collection("post").find({}).toArray();
   res.status(200).json(result);
+  console.log("here", result);
 }
 
 export default handler;
