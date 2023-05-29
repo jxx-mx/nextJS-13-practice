@@ -1,6 +1,7 @@
 "use client";
 
 import DetailLink from "./DetailLink";
+import { MouseEvent } from "react";
 
 type ListItemProps = {
   id: string;
@@ -9,12 +10,27 @@ type ListItemProps = {
 };
 
 function ListItem({ data }: { data: ListItemProps[] }) {
-  console.log(data);
-  function deleteItem(id: string): void {
+  function deleteItem(
+    id: string,
+    e: MouseEvent<HTMLDivElement, globalThis.MouseEvent>
+  ): void {
     fetch(`/api/post/delete`, {
       method: "DELETE",
       body: id.toString(),
-    }).then((res) => res.json().then((res) => console.log(res.message)));
+    }).then((res) =>
+      res.json().then(() => {
+        const parentElement =
+          e.target instanceof HTMLDivElement
+            ? e.target.parentElement
+            : undefined;
+        if (parentElement) {
+          parentElement.style.opacity = "0";
+          setTimeout(() => {
+            parentElement.style.display = "none";
+          }, 500);
+        }
+      })
+    );
   }
 
   return (
@@ -25,7 +41,7 @@ function ListItem({ data }: { data: ListItemProps[] }) {
           <p>{item.content}</p>
           <DetailLink to={`/detail/${item.id}`} text="상세보기" />
           <DetailLink to={`/edit/${item.id}`} text="수정하기" />
-          <span onClick={() => deleteItem(item.id)}>🗑️</span>
+          <div onClick={(e) => deleteItem(item.id, e)}>🗑️</div>
         </div>
       ))}
     </>
